@@ -1,0 +1,49 @@
+<section class="content" id="info">
+    <!--MAP-->
+    <div class="block">
+        <h3 class="block-title">Dove siamo:</h3>
+        <div id="map-wrap" class="block-content">
+            <div id="gmap"  style="height: 30em; width: 90%; margin: 0 auto 2em;"></div>
+        </div>
+    </div>
+    
+    <!--MAIL FORM-->
+    <div class="block">
+          
+        <div class="block-title">
+            <h4>Se hai qualcosa da chiederci</h4>
+            <h5>contattaci tramite l'apposito form</h5>    
+
+        </div>  
+          
+        <form class="block-content" name="form" novalidate ng-controller="contactFormCtrl">
+            <input type="text" ng-model="user.name" name="username" placeholder="Nome" required/>
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="error-message">Ci serve il tuo nome</span>
+
+            <input type="email" ng-model="user.mail" name="usermail" placeholder="Mail" required/>
+            <span ng-show="form.usermail.$dirty && form.usermail.$error.email" class="error-message"> Sicuro di aver scritto bene?</span>
+            <span ng-show="form.usermail.$dirty && form.usermail.$error.required" class="error-message">Cos'è non hai una mail?</span>
+
+            <textarea name="usermsg"id="in_mail_text"ng-model="user.message" type="text" placeholder="Messaggio" rows="4" cols="50" ng-minlength="10" required/>
+            <span ng-show="form.usermsg.$dirty && form.usermsg.$error.required" class="error-message">Su, scrivi qualcosa!</span>            
+            <span ng-show="form.usermsg.$dirty && form.usermsg.$error.minlength" class="error-message">Hai davvero così poco da ridire? Aggiungi qualcos'altro.</span>
+
+            <button class="button" ng-click="sendMessage(user)" ng-disabled="form.$invalid">INVIA</button>
+          </form>
+  
+
+</section>
+
+        
+
+<script type="text/javascript">
+    //SET MAP POSITION
+    new Maplace({
+        show_markers: true,
+        locations: [{
+            lat: 40.771778, 
+            lon: 14.795154,
+            zoom: 15
+        }]
+    }).Load(); 
+</script>

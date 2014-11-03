@@ -1,0 +1,48 @@
+<section class="content" id="signup">         
+        <div class="block">
+            <h3 class="block-title">Regolamento:</h3>
+            <div class="block-content">
+               	<ol>
+                   <li>Creare un gioco <b>giocabile</b>, ovvero che si avvii e funzioni, basta anche un solo livello</li>
+
+                   <li>Il tempo è di 2 giorni o 48 ore o 2880 minuti o 172800000000 microsecondi, calcolalo come ti pare ma non eccedere di un secondo.</li>                               
+
+                   <li>Le squadre possono essere formate al massimo da 5 persone</li>
+
+                   <li>Nessun lavoro realizzato da un utente non facente parte del team può essere utilizzato, fatta eccezione per assets esterni con licenze consone che ne permettono la redistribuzione o modifica. 
+					Sta a voi verificare le licenze, noi decliniamo ogni responsabilità a riguardo. Inoltre dovete citare le fonti e dare i rispettivi credit agli autori. </li>
+
+                   <li>I giochi devono incorporare delle variabili speciali assegnate ad ogni squadra all'inizio della jam</li>
+
+                   <li>Non è possibile lasciare il luogo della jam salvo per cause di forza maggiore (lo staff sa meglio di te se lo è o no e spetta a loro decidere) pena la squalifica.</li>
+	            </ol>
+
+	            <p>
+	           		<b>Note:</b> Il gioco creato in quest’ambito sarà il TUO. Puoi ampliarlo, modificarlo, venderlo e farne ciò che vuoi.<br>
+	                Gli unici vincoli riguardano l'inserimento in tutte le opere presentate (per ovvi motivi di promozione)<br>
+	                della seguente riga all'inizio o nei crediti finali: "Questo gioco è stato sviluppato durante l’UNISAGJ ( www.unisagj.it)".<br>
+	                E la possibilità di utilizzare i giochi sviluppati in questo ambito a scopo promozionale.
+	            </p>
+            </div>
+        </div>
+
+        <div class="block">
+          
+          <h3 class="block-title">Registrati qui:</h3>
+          
+          <form class="block-content" name="form" novalidate ng-controller="signupFormCtrl">
+            <input type="text" ng-model="user.name" name="username" placeholder="Nome" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"/>
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="error-message">Ci serve il tuo nome</span>
+
+            <input type="email" ng-model="user.mail" name="usermail" placeholder="Mail" required ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }"/>
+            <span ng-show="form.usermail.$dirty && form.usermail.$error.email" class="error-message"> Sicuro di aver scritto bene?</span>
+            <span ng-show="form.usermail.$dirty && form.usermail.$error.required" class="error-message">Cos'è non hai una mail?</span>
+          
+            <input type="password" ng-model="user.password" name="userpass" placeholder="Password" required ng-minlength="8" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }"/>
+            <span ng-show="form.userpass.$dirty && form.userpass.$error.required" class="error-message">La password del tuo conto bancario andrà bene </span>            
+            <span ng-show="form.userpass.$dirty && form.userpass.$error.minlength" class="error-message">Ti sei stancato di scrivere? Almeno 8 caratteri, grazie.</span>
+
+            <button class="button" ng-click="sendInfo(user)" ng-disabled="form.$invalid">INVIA</button>
+          </form>
+    	</div>            
+</section>

@@ -1,0 +1,38 @@
+
+	<!-- SVG SCENE -->
+	<div id="scene"></div>			
+	<!-- TITLE -->
+	<h1>UNISA GAME JAM</h1>
+
+	<!-- NAVBAR -->
+	<nav>
+		<!-- NAVIGATION -->
+		<ul>
+			<li><a href="#/" id="btn-home"><i class="fa fa-home mobile-icon"></i><b class="nav-item">HOME</b></a></li>
+			<li><a href="#/signup" id="btn-signup"><i class="fa fa-sign-in mobile-icon"></i><b class="nav-item">SIGNUP</b></a></li>
+			<li><a href="#/info" id="btn-info"><i class="fa fa fa-envelope-o mobile-icon"></i><b class="nav-item">INFO</b></a></li>
+		</ul>
+
+		<!-- SOCIAL LINKS -->
+		<div id="social">
+			<a href="http://blog.unisagj.it" id="btn-news"><b class="social-text">BLOG</b><i class="fa fa-newspaper-o mobile-icon"></i></a>
+			<span class="social-text">/</span>
+			<a href="" id="btn-fb"><b class="social-text">PAGINA</b><i class="fa fa-facebook mobile-icon"></i></a>
+		</div>
+	</nav>
+
+	<script type="text/javascript">	
+	//LOAD BACKGROUND SCENE
+	$("#scene").load('/img/scene.svg');
+
+	//STICKY NAVBAR
+	var navOffset =  $('nav').offset().top;
+
+	$(window).bind('scroll', function () {
+		if ($(window).scrollTop() > navOffset && !$('nav').hasClass('fixed-nav'))
+			$('nav').addClass('fixed-nav').fadeOut(0).fadeIn(200);
+						
+		if ($(window).scrollTop() < navOffset && $('nav').hasClass('fixed-nav'))
+			$('nav').removeClass('fixed-nav').fadeOut(0).fadeIn(200);					
+	});
+	</script>
