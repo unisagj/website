@@ -1,6 +1,6 @@
 
 	<!-- SVG SCENE -->
-	<div id="scene"></div>			
+	<div id="scene" ng-include='"/img/scene.svg"'>></div>			
 	<!-- TITLE -->
 	<h1>UNISA GAME JAM</h1>
 
@@ -16,23 +16,21 @@
 		<!-- SOCIAL LINKS -->
 		<div id="social">
 			<a href="http://blog.unisagj.it" id="btn-news"><b class="social-text">BLOG</b><i class="fa fa-newspaper-o mobile-icon"></i></a>
-			<span class="social-text">/</span>
-			<a href="" id="btn-fb"><b class="social-text">PAGINA</b><i class="fa fa-facebook mobile-icon"></i></a>
+			<span class="social-text separer">/</span>
+			<a href="https://www.facebook.com/unisagj" id="btn-fb"><b class="social-text">PAGINA</b><i class="fa fa-facebook mobile-icon"></i></a>
 		</div>
 	</nav>
 
 	<script type="text/javascript">	
-	//LOAD BACKGROUND SCENE
-	$("#scene").load('/img/scene.svg');
+	(function () {
+		var navOffset =  $('nav').offset().top;
 
-	//STICKY NAVBAR
-	var navOffset =  $('nav').offset().top;
-
-	$(window).bind('scroll', function () {
-		if ($(window).scrollTop() > navOffset && !$('nav').hasClass('fixed-nav'))
-			$('nav').addClass('fixed-nav').fadeOut(0).fadeIn(200);
-						
-		if ($(window).scrollTop() < navOffset && $('nav').hasClass('fixed-nav'))
-			$('nav').removeClass('fixed-nav').fadeOut(0).fadeIn(200);					
-	});
+		$(window).bind('scroll', function () {
+			if ($(window).scrollTop() > navOffset && !$('nav').hasClass('fixed-nav'))
+				$('nav').addClass('fixed-nav').fadeOut(0).fadeIn(200);
+							
+			if ($(window).scrollTop() < navOffset && $('nav').hasClass('fixed-nav'))
+				$('nav').removeClass('fixed-nav').fadeOut(0).fadeIn(200);					
+		});
+	})();
 	</script>
