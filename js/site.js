@@ -27,7 +27,7 @@ app.controller('signupFormCtrl', function ($scope){
     $scope.user = {};
 	
 	$scope.sendInfo = function (user) {
-    var userData = 'user=' + user.name + '&mail=' + user.mail + '&pwd=' + user.password;
+    var userData = 'user=' + user.name + '&mail=' + user.mail + '&pwd=' + user.password;    
 
 		$.ajax({
 		    type: 'POST',
@@ -35,12 +35,12 @@ app.controller('signupFormCtrl', function ($scope){
 		    data: userData,
 		    
 		    success: function(result){
-	        	if(result == "error") alert("Qualcosa è andato storto")
-				else alert("Registrazione effettuata con successo. Ti abbiamo inviato una mail per l'attivazione.");
+	        	if(result == "error") app.showDialog("ERRORE :(", "Qualcosa è andato storto", "ERROR");
+				else app.showDialog("OK :)", "Registrazione effettuata con successo. Ti abbiamo inviato una mail per l'attivazione.", "SUCCESS");
 			},
 		    
 		    error: function(reult){
-				alert("Qualcosa è andato storto");				              
+				app.showDialog("ERRORE :(", "Qualcosa è andato storto", "ERROR");				              
 		  	}
 		});				    
 	}
@@ -58,13 +58,40 @@ app.controller('contactFormCtrl', function ($scope){
                 data: userData,
 
                 success: function(result){                                                                                                                
-                    if(result == "error") alert("Qualcosa è andato storto!");
-                    else alert("Messaggio inviato " + user.name + ", finirà dritto nello spam :P");
+                    if(result == "error") app.showDialog("ERRORE :(", "Qualcosa è andato storto!"), "ERROR";
+                    else app.showDialog("FATTO :)", "Messaggio inviato " + user.name + ", finirà dritto nello spam :P", "SUCCESS");
                 },
                 
                 error: function(reult){                            
-                    alert("Qualcosa è andato storto!");
+                    app.showDialog("ERRORE :(", "Qualcosa è andato storto!", "ERROR");
                 }
         });
 	}
+});
+
+
+
+$(function() {
+	app.dialogWrap = $('#modal-wrap');
+	//type can be ERROR or SUCCESS
+	var dialogButton = $("#modal-dialog>#close-btn");
+	dialogButton.click( function () {
+			app.dialogWrap.fadeOut(300);
+		});
+
+	app.showDialog = function (title, message, type){
+		var dialogTitle = $("#dialog-title"),
+			dialogContent = $("#dialog-content");
+		
+		app.dialogWrap.fadeIn(300);	
+		
+		if (type === "ERROR"){
+			dialogTitle.css("background-color", "#f00");
+		} else if (type === "SUCCESS") {
+			dialogTitle.css("background-color", "#008000");
+		}
+		
+		dialogTitle.html(title);
+		dialogContent.html(message);	
+	}	
 });

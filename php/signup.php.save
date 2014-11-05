@@ -1,4 +1,3 @@
-<?php
 
 	include '../conf/db_data.inc.php';
 	require dirname(__FILE__).'/mail/PHPMailerAutoload.php';
@@ -9,7 +8,7 @@
 
 	$activation = time();
 
-	$sql = "INSERT INTO jammers (ID_J, USERNAME, MAIL, PWD, ACTIVATION, STATUS, ID_T) VALUES (NULL, '".$user_post."',  '".$mail_post."',  '".$pwd_post."', '".$activation."', 0, 0)";
+	$sql = "INSERT INTO jammers (ID_J, USERNAME, MAIL, PWD, ACTIVATION, TEAM_LEADER, STATUS, ID_T) VALUES (NULL, '".$user_post."',  '".$mail_post."',  '".$pwd_post."', '".$activation."', 0, 0, 0)";
 	
 	mysql_query($sql) or die("error");
 
