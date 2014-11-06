@@ -1,6 +1,13 @@
 
 	<!-- SVG SCENE -->
-	<div id="scene" ng-include='"/img/scene.svg"'>></div>			
+	<div id="scene"></div>			
+	<script src="/js/snap.svg-min.js"></script>
+	<script>
+		var canvas = Snap("#scene");
+		Snap.load("/img/scene.svg", function (el){
+			canvas.append(el);
+		});
+	</script>
 	<!-- TITLE -->
 	<h1>UNISA GAME JAM</h1>
 

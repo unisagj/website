@@ -19,11 +19,11 @@ app.config(['$routeProvider', function($routeProvider){
 		});
 }]);	
 
-app.controller('mainController', function ($scope){
+app.controller('mainController', ['$scope', function ($scope){
 
-});
+}]);
 
-app.controller('signupFormCtrl', function ($scope){
+app.controller('signupFormCtrl', ['$scope', function ($scope){
     $scope.user = {};
 	
 	$scope.sendInfo = function (user) {
@@ -44,9 +44,9 @@ app.controller('signupFormCtrl', function ($scope){
 		  	}
 		});				    
 	}
-});
+}]);
 
-app.controller('contactFormCtrl', function ($scope){
+app.controller('contactFormCtrl', ['$scope', function ($scope){
 	$scope.user = {};
 
 	$scope.sendMessage = function (user) {
@@ -67,7 +67,7 @@ app.controller('contactFormCtrl', function ($scope){
                 }
         });
 	}
-});
+}]);
 
 
 
